@@ -4,3 +4,4 @@ unti
 sikko
 neko
 tori
+inu
