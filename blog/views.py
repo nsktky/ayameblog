@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
@@ -33,3 +33,35 @@ class CategoryListView(ListView):
 class TagListView(ListView):
     queryset = Tag.objects.annotate(num_posts=Count(
         'post', filter=Q(post__is_public=True)))
+
+
+class CategoryPostView(ListView):
+    model = Post
+    template_name = 'blog/category_post.html'
+
+    def get_queryset(self):
+        category_slug = self.kwargs['category_slug']
+        self.category = get_object_or_404(Category, sulg=category_slug)
+        qs = super().get_queryset().filter(category=self.category)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        content = super().get_context_data(**kwargs)
+        content['category'] = self.category
+        return content
+
+
+class TagPostView(ListView):
+    model = Post
+    template_name = 'blog/tag_post.html'
+
+    def get_queryset(self):
+        tag_slug = self.kwargs['tag_slug']
+        self.tag = get_object_or_404(Tag, sulg=tag_slug)
+        qs = super().get_queryset().filter(tag=self.tag)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        content = super().get_context_data(**kwargs)
+        content['tag'] = self.tag
+        return content
