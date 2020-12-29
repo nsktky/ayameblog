@@ -1,0 +1,10 @@
+<!-- blog/post_detail.heml -->
+
+<h1>{{ object.title }}</h1>
+<p>{{ object.published_at|date }}</p>
+<p>{{ object.category.name }}</p>
+{% for tag in object.tags.all %}
+{{ tag.name }}
+{% endfor %}
+<hr>
+{{ object.content|safe }}
