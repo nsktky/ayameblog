@@ -1,7 +1,6 @@
 from django.urls import path
 
 from blog.views import(
-    CategoryListView, 
     IndexView, 
     PostDetailView, 
     CategoryListView, 
