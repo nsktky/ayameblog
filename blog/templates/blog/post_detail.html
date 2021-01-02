@@ -1,4 +1,9 @@
-<!-- blog/post_detail.heml -->
+{% extends 'base.html' %}
+
+{% block title %}投稿一覧 | {{ block.super }}{% endblock %}
+{% block description %}文目卓弥のブログです。やっていき。{% endblock %}
+
+{% block content %}
 
 <h1>{{ object.title }}</h1>
 <p>{{ object.published_at|date }}</p>
@@ -8,3 +13,5 @@
 {% endfor %}
 <hr>
 {{ object.content|safe }}
+
+{% endblock %}

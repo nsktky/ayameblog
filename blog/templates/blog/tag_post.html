@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}投稿一覧 | {{ block.super }}{% endblock %}
+{% block description %}文目卓弥のブログです。やっていき。{% endblock %}
+
+{% block content %}
+
 <h1>「{{ tag.name }}」の投稿一覧</h1>
 <ul>
   {% for post in object_list %}
@@ -10,3 +17,5 @@
   <li>まだ投稿はありません。</li>
   {% endfor %}
 </ul>
+
+{% endblock %}
