@@ -1,7 +1,10 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% extends 'base.html' %}
 
-<h1>投稿一覧</h1>
+{% block title %}投稿一覧 | {{ block.super }}{% endblock %}
+{% block description %}文目卓弥のブログです。やっていき。{% endblock %}
+
+{% block content %}
+<h2>投稿一覧</h2>
 <ul>
   {% for post in object_list %}
   {% if user.is_authenticated or post.is_public %}
@@ -19,3 +22,4 @@
   <li>まだ投稿はありません。</li>
   {% endfor %}
 </ul>
+{% endblock %}
