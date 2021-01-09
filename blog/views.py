@@ -23,6 +23,7 @@ class PostDetailView(DetailView):
 class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
+    paginate_by = 1
 
 
 class CategoryListView(ListView):
