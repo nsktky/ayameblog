@@ -68,7 +68,7 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
-    post = models.ForeignKey(
+    comment = models.ForeignKey(
         Comment, on_delete=models.CASCADE, related_name='replies')
     author = models.CharField(max_length=50)
     text = models.TextField()

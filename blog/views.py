@@ -135,8 +135,6 @@ class ReplyFormView(CreateView):
         reply = form.save(commit=False)
         comment_pk = self.kwargs['pk']
         reply.comment = get_object_or_404(Comment, pk=comment_pk)
-        raise ValueError(reply)
-        
         reply.save()
         return redirect('blog:post_detail', pk=reply.comment.post.pk)
 
